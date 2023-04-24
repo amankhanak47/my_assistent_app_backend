@@ -457,9 +457,9 @@ router.post(
 );
 
 
-router.post("/fetchplan", [body("id")], async (req, res) => {
+router.post("/fetchplan", fetchuser, async (req, res) => {
   try {
-    const plan = await Dayplaner.find({ user: req.body.id });
+    const plan = await Dayplaner.find({ user: req.user.id });
     console.log(plan)
     res.json(plan);
   } catch (error) {
